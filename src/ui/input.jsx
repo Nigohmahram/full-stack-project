@@ -3,13 +3,13 @@ const Input = ({ label, state, setState, type = 'text' }) => {
 		<div className='form-floating'>
 			<input
 				type={type}
-				class='form-control'
+				className='form-control'
 				value={state}
 				onChange={e => setState(e.target.value)}
 				id='floatingInput'
 				placeholder={label}
 			/>
-			<label for='floatingInput'>{label}</label>
+			<label htmlFor='floatingInput'>{label}</label>
 		</div>
 	);
 };
