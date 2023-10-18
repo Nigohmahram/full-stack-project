@@ -8,12 +8,21 @@ import ArticleService from '../service/article';
 const Main = () => {
 	const dispatch = useDispatch();
 	const { articles, isLoading } = useSelector(state => state.article);
+	const { loggedIn, user } = useSelector(state => state.auth);
 	const navigate = useNavigate();
 	const getArticles = async () => {
 		dispatch(getArticlesStart());
 		try {
 			const response = await ArticleService.getArticles();
 			dispatch(getArticlesSuccess(response.articles));
+		} catch (error) {
+			console.log(error);
+		}
+	};
+	const deleteArticle = async slug => {
+		try {
+			await ArticleService.deleteArticle(slug);
+			getArticles();
 		} catch (error) {
 			console.log(error);
 		}
@@ -60,9 +69,17 @@ const Main = () => {
 											<button type='button' className='btn btn-sm btn-outline-secondary'>
 												Edit
 											</button>
-											<button type='button' className='btn btn-sm btn-outline-danger'>
-												Delete
-											</button>
+											{loggedIn && user.username === item.author.username && (
+												<>
+													<button
+														type='button'
+														className='btn btn-sm btn-outline-danger'
+														onClick={() => deleteArticle(item.slug)}
+													>
+														Delete
+													</button>
+												</>
+											)}
 										</div>
 										<small className='text-body-secondary text-capitalize fw-bold '>{item.author.username}</small>
 									</div>
