@@ -34,11 +34,11 @@ export const articleSlice = createSlice({
 	},
 });
 export const {
-	getArticleDetailStart,
-	getArticleDetailSuccess,
-	getArticleDetailFailure,
 	getArticlesStart,
 	getArticlesSuccess,
 	getArticlesFailure,
+	getArticleDetailFailure,
+	getArticleDetailStart,
+	getArticleDetailSuccess,
 } = articleSlice.actions;
 export default articleSlice.reducer;

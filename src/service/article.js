@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from './api';
 
 const ArticleService = {
 	async getArticles() {
@@ -6,7 +6,7 @@ const ArticleService = {
 		return data;
 	},
 	async getArticleDetail(slug) {
-		const data = await axios.get(`/articles/$(slug)`);
+		const { data } = await axios.get(`/articles/${slug}`);
 		return data;
 	},
 };
