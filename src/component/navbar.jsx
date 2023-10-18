@@ -28,6 +28,9 @@ const Navbar = () => {
 						>
 							{user.username}
 						</p>
+						<Link to={'/create-article'} className='btn btn-primary me-3 py-2 text-dark text-decoration-none'>
+							Create++
+						</Link>
 						<button className='btn btn-outline-danger' onClick={logoutHandler}>
 							Logout
 						</button>
